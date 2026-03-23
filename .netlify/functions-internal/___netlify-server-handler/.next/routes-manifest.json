@@ -29,6 +29,22 @@
         "nxtPslug": "nxtPslug"
       },
       "namedRegex": "^/pantalla/(?<nxtPslug>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/proveedor/[slug]",
+      "regex": "^/proveedor/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/proveedor/(?<nxtPslug>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/[city]",
+      "regex": "^/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPcity": "nxtPcity"
+      },
+      "namedRegex": "^/(?<nxtPcity>[^/]+?)(?:/)?$"
     }
   ],
   "staticRoutes": [
@@ -49,6 +65,12 @@
       "regex": "^/_not\\-found(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/_not\\-found(?:/)?$"
+    },
+    {
+      "page": "/api/leads",
+      "regex": "^/api/leads(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/leads(?:/)?$"
     },
     {
       "page": "/buscar",
@@ -115,6 +137,18 @@
       "regex": "^/registro(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/registro(?:/)?$"
+    },
+    {
+      "page": "/robots.txt",
+      "regex": "^/robots\\.txt(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/robots\\.txt(?:/)?$"
+    },
+    {
+      "page": "/sitemap.xml",
+      "regex": "^/sitemap\\.xml(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/sitemap\\.xml(?:/)?$"
     }
   ],
   "dataRoutes": [],

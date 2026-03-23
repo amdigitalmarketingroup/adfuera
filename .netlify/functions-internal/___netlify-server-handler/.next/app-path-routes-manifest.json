@@ -6,12 +6,17 @@
   "/(dashboard)/dashboard/pantallas/page": "/dashboard/pantallas",
   "/(dashboard)/dashboard/perfil/page": "/dashboard/perfil",
   "/(dashboard)/dashboard/solicitudes/page": "/dashboard/solicitudes",
+  "/(public)/[city]/page": "/[city]",
   "/(public)/buscar/page": "/buscar",
   "/(public)/como-funciona/page": "/como-funciona",
   "/(public)/page": "/",
   "/(public)/pantalla/[slug]/page": "/pantalla/[slug]",
   "/(public)/precios/page": "/precios",
+  "/(public)/proveedor/[slug]/page": "/proveedor/[slug]",
   "/_global-error/page": "/_global-error",
   "/_not-found/page": "/_not-found",
-  "/favicon.ico/route": "/favicon.ico"
+  "/api/leads/route": "/api/leads",
+  "/favicon.ico/route": "/favicon.ico",
+  "/robots.txt/route": "/robots.txt",
+  "/sitemap.xml/route": "/sitemap.xml"
 }

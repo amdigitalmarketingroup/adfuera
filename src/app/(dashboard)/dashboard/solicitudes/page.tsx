@@ -1,26 +1,23 @@
-"use client"
+import { createClient } from "@/lib/supabase/server"
+import { redirect } from "next/navigation"
+import { LeadsList } from "@/components/dashboard/leads-list"
 
-import { motion } from "framer-motion"
-import { MessageSquare } from "lucide-react"
+export default async function SolicitudesPage() {
+  const supabase = await createClient()
+  const { data: { user } } = await supabase.auth.getUser()
+  if (!user) redirect("/login")
 
-export default function SolicitudesPage() {
-  return (
-    <div>
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-        <h1 className="font-heading font-bold text-2xl mb-1" style={{ letterSpacing: "-0.02em" }}>Solicitudes</h1>
-        <p className="text-sm text-muted-foreground mb-8">Gestiona las solicitudes de cotización de anunciantes</p>
-      </motion.div>
+  const { data: mediaOwner } = await supabase
+    .from("media_owners")
+    .select("id")
+    .eq("user_id", user.id)
+    .single()
 
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.1 }}
-        className="rounded-xl border border-border bg-card p-12 text-center"
-      >
-        <MessageSquare className="w-12 h-12 text-muted-foreground/30 mx-auto mb-3" />
-        <h3 className="font-heading font-semibold mb-1">Sin solicitudes aún</h3>
-        <p className="text-sm text-muted-foreground">Cuando un anunciante solicite cotización, aparecerá aquí.</p>
-      </motion.div>
-    </div>
-  )
+  const { data: leads } = await supabase
+    .from("leads")
+    .select("*, screen:screens(name, slug)")
+    .eq("media_owner_id", mediaOwner?.id)
+    .order("created_at", { ascending: false })
+
+  return <LeadsList leads={leads || []} />
 }

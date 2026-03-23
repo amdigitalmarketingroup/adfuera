@@ -6,12 +6,17 @@
   "/(dashboard)/dashboard/pantallas/page": "app/(dashboard)/dashboard/pantallas/page.js",
   "/(dashboard)/dashboard/perfil/page": "app/(dashboard)/dashboard/perfil/page.js",
   "/(dashboard)/dashboard/solicitudes/page": "app/(dashboard)/dashboard/solicitudes/page.js",
+  "/(public)/[city]/page": "app/(public)/[city]/page.js",
   "/(public)/buscar/page": "app/(public)/buscar/page.js",
   "/(public)/como-funciona/page": "app/(public)/como-funciona/page.js",
   "/(public)/page": "app/(public)/page.js",
   "/(public)/pantalla/[slug]/page": "app/(public)/pantalla/[slug]/page.js",
   "/(public)/precios/page": "app/(public)/precios/page.js",
+  "/(public)/proveedor/[slug]/page": "app/(public)/proveedor/[slug]/page.js",
   "/_global-error/page": "app/_global-error/page.js",
   "/_not-found/page": "app/_not-found/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js"
+  "/api/leads/route": "app/api/leads/route.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/robots.txt/route": "app/robots.txt/route.js",
+  "/sitemap.xml/route": "app/sitemap.xml/route.js"
 }

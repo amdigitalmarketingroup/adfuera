@@ -1,18 +1,33 @@
-"use client"
-import { motion } from "framer-motion"
-import { CreditCard } from "lucide-react"
+import { createClient } from "@/lib/supabase/server"
+import { redirect } from "next/navigation"
+import SubscriptionContent from "@/components/dashboard/subscription-content"
 
-export default function CuentaPage() {
-  return (
-    <div>
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-        <h1 className="font-heading font-bold text-2xl mb-1">Suscripción</h1>
-        <p className="text-sm text-muted-foreground mb-8">Gestiona tu plan y método de pago</p>
-      </motion.div>
-      <div className="rounded-xl border border-border bg-card p-12 text-center">
-        <CreditCard className="w-12 h-12 text-muted-foreground/30 mx-auto mb-3" />
-        <p className="text-sm text-muted-foreground">Próximamente — integración con Stripe</p>
+export default async function CuentaPage() {
+  const supabase = await createClient()
+  const { data: { user } } = await supabase.auth.getUser()
+  if (!user) redirect("/login")
+
+  const { data: mediaOwner } = await supabase
+    .from("media_owners")
+    .select("id, company_name, email, subscription_plan, subscription_status, stripe_customer_id, stripe_subscription_id, trial_ends_at")
+    .eq("user_id", user.id)
+    .single()
+
+  if (!mediaOwner) {
+    return (
+      <div className="text-center py-20">
+        <h2 className="font-heading font-semibold text-xl mb-2">Perfil no encontrado</h2>
+        <p className="text-muted-foreground">No se encontró un perfil de proveedor asociado a tu cuenta.</p>
       </div>
-    </div>
+    )
+  }
+
+  return (
+    <SubscriptionContent
+      plan={mediaOwner.subscription_plan || "free"}
+      status={mediaOwner.subscription_status || "trial"}
+      hasStripeCustomer={!!mediaOwner.stripe_customer_id}
+      trialEndsAt={mediaOwner.trial_ends_at}
+    />
   )
 }
