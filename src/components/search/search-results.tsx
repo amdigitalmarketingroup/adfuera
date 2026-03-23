@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { ScreenCard } from "@/components/screens/screen-card"
+import { ScreenMap } from "@/components/maps/screen-map"
 import { FORMAT_TYPES, AVAILABILITY_STATUS } from "@/lib/constants"
 import type { Screen } from "@/types"
 
@@ -199,14 +200,10 @@ export function SearchResults({ screens, initialParams }: SearchResultsProps) {
             )}
           </div>
 
-          {/* Map placeholder */}
+          {/* Map */}
           <div className={`hidden lg:block w-[400px] xl:w-[480px] shrink-0 ${view === "map" ? "!block w-full lg:w-[480px]" : ""}`}>
-            <div className="sticky top-36 h-[calc(100vh-10rem)] rounded-2xl bg-muted border border-border overflow-hidden flex items-center justify-center">
-              <div className="text-center p-8">
-                <MapIcon className="w-12 h-12 text-muted-foreground/40 mx-auto mb-3" />
-                <p className="font-heading font-medium text-muted-foreground">Mapa interactivo</p>
-                <p className="text-xs text-muted-foreground/60 mt-1">Próximamente con Mapbox</p>
-              </div>
+            <div className="sticky top-36 h-[calc(100vh-10rem)] rounded-2xl border border-border overflow-hidden">
+              <ScreenMap screens={screens} />
             </div>
           </div>
         </div>

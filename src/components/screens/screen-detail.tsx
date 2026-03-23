@@ -14,6 +14,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Badge } from "@/components/ui/badge"
 import { ScreenCard } from "./screen-card"
+import { ScreenMap } from "@/components/maps/screen-map"
 import { FORMAT_TYPES, AVAILABILITY_STATUS } from "@/lib/constants"
 import { formatPrice, formatNumber } from "@/lib/utils"
 import type { Screen } from "@/types"
@@ -121,6 +122,25 @@ export function ScreenDetail({ screen, similarScreens }: ScreenDetailProps) {
                   </div>
                 ))}
               </div>
+            </motion.div>
+
+            {/* Map */}
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }}>
+              <h2 className="font-heading font-semibold text-lg mb-4">Ubicación</h2>
+              <div className="h-[300px] md:h-[400px] rounded-2xl overflow-hidden border border-border">
+                <ScreenMap
+                  screens={[screen]}
+                  center={[Number(screen.latitude), Number(screen.longitude)]}
+                  zoom={16}
+                  singleMarker
+                />
+              </div>
+              {screen.address && (
+                <p className="text-sm text-muted-foreground mt-2 flex items-center gap-1">
+                  <MapPin className="w-3.5 h-3.5" />
+                  {screen.address}
+                </p>
+              )}
             </motion.div>
 
             {/* Similar screens */}

@@ -27,7 +27,8 @@ export const LEAD_STATUS = {
 export const SUBSCRIPTION_PLANS = {
   basic: {
     name: 'Básico',
-    price: 299,
+    price: 599,
+    annualPrice: 5750,
     currency: 'MXN',
     screens_limit: 3,
     photos_per_screen: 3,
@@ -35,7 +36,8 @@ export const SUBSCRIPTION_PLANS = {
   },
   standard: {
     name: 'Estándar',
-    price: 599,
+    price: 1199,
+    annualPrice: 11510,
     currency: 'MXN',
     screens_limit: 15,
     photos_per_screen: 5,
@@ -49,7 +51,8 @@ export const SUBSCRIPTION_PLANS = {
   },
   pro: {
     name: 'Pro',
-    price: 1199,
+    price: 2399,
+    annualPrice: 23030,
     currency: 'MXN',
     screens_limit: Infinity,
     photos_per_screen: 10,
