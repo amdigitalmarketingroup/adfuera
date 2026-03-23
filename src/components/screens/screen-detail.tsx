@@ -27,6 +27,7 @@ interface ScreenDetailProps {
 export function ScreenDetail({ screen, similarScreens }: ScreenDetailProps) {
   const [formSent, setFormSent] = useState(false)
   const [sending, setSending] = useState(false)
+  const [formError, setFormError] = useState<string | null>(null)
   const format = FORMAT_TYPES[screen.format_type]
   const status = AVAILABILITY_STATUS[screen.availability_status]
 
@@ -50,10 +51,39 @@ export function ScreenDetail({ screen, similarScreens }: ScreenDetailProps) {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setSending(true)
-    // Simulate sending
-    await new Promise(r => setTimeout(r, 1500))
-    setFormSent(true)
-    setSending(false)
+    setFormError(null)
+
+    const formData = new FormData(e.currentTarget)
+
+    try {
+      const res = await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          screen_id: screen.id,
+          media_owner_id: screen.media_owner_id,
+          advertiser_name: formData.get("name") as string,
+          advertiser_company: (formData.get("company") as string) || undefined,
+          advertiser_phone: formData.get("phone") as string,
+          advertiser_email: formData.get("email") as string,
+          message: (formData.get("message") as string) || undefined,
+        }),
+      })
+
+      const data = await res.json()
+
+      if (!res.ok) {
+        setFormError(data.error || "Error al enviar solicitud")
+        setSending(false)
+        return
+      }
+
+      setFormSent(true)
+    } catch (err) {
+      setFormError("Error de conexión. Intenta de nuevo.")
+    } finally {
+      setSending(false)
+    }
   }
 
   return (
@@ -230,6 +260,9 @@ export function ScreenDetail({ screen, similarScreens }: ScreenDetailProps) {
                       <Label htmlFor="message" className="text-xs">Mensaje</Label>
                       <Textarea id="message" name="message" placeholder="Cuéntanos sobre tu campaña..." rows={3} className="mt-1" />
                     </div>
+                    {formError && (
+                      <p className="text-sm text-red-500 text-center">{formError}</p>
+                    )}
                     <Button type="submit" className="w-full" disabled={sending}>
                       {sending ? "Enviando..." : "Enviar solicitud"}
                       {!sending && <Send className="w-4 h-4 ml-2" />}

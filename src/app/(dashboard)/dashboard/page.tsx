@@ -1,65 +1,72 @@
-"use client"
+import { createClient } from "@/lib/supabase/server"
+import { redirect } from "next/navigation"
+import DashboardContent from "@/components/dashboard/dashboard-content"
 
-import { motion } from "framer-motion"
-import { Monitor, MessageSquare, Eye, TrendingUp } from "lucide-react"
+export default async function DashboardPage() {
+  const supabase = await createClient()
+  const { data: { user } } = await supabase.auth.getUser()
+  if (!user) redirect("/login")
 
-const metrics = [
-  { label: "Pantallas activas", value: "—", icon: Monitor, change: null },
-  { label: "Solicitudes", value: "—", icon: MessageSquare, change: null },
-  { label: "Vistas totales", value: "—", icon: Eye, change: null },
-  { label: "Tasa de respuesta", value: "—", icon: TrendingUp, change: null },
-]
+  // Get media owner
+  const { data: mediaOwner } = await supabase
+    .from("media_owners")
+    .select("*")
+    .eq("user_id", user.id)
+    .single()
 
-export default function DashboardPage() {
+  if (!mediaOwner) {
+    return (
+      <div className="text-center py-20">
+        <h2 className="font-heading font-semibold text-xl mb-2">Perfil no encontrado</h2>
+        <p className="text-muted-foreground">No se encontró un perfil de proveedor asociado a tu cuenta.</p>
+      </div>
+    )
+  }
+
+  // Get counts
+  const { count: screensCount } = await supabase
+    .from("screens")
+    .select("*", { count: "exact", head: true })
+    .eq("media_owner_id", mediaOwner.id)
+    .eq("is_active", true)
+
+  const { count: leadsCount } = await supabase
+    .from("leads")
+    .select("*", { count: "exact", head: true })
+    .eq("media_owner_id", mediaOwner.id)
+
+  const { count: newLeadsCount } = await supabase
+    .from("leads")
+    .select("*", { count: "exact", head: true })
+    .eq("media_owner_id", mediaOwner.id)
+    .eq("status", "new")
+
+  // Get total views
+  const { data: screens } = await supabase
+    .from("screens")
+    .select("views_count")
+    .eq("media_owner_id", mediaOwner.id)
+
+  const totalViews = screens?.reduce((sum, s) => sum + (s.views_count || 0), 0) || 0
+
+  // Recent leads
+  const { data: recentLeads } = await supabase
+    .from("leads")
+    .select("*, screen:screens(name, slug)")
+    .eq("media_owner_id", mediaOwner.id)
+    .order("created_at", { ascending: false })
+    .limit(5)
+
   return (
-    <div>
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-        <h1 className="font-heading font-bold text-2xl mb-1" style={{ letterSpacing: "-0.02em" }}>
-          Dashboard
-        </h1>
-        <p className="text-sm text-muted-foreground mb-8">
-          Resumen de tu cuenta y actividad reciente
-        </p>
-      </motion.div>
-
-      {/* Metrics */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-        {metrics.map((metric, i) => (
-          <motion.div
-            key={metric.label}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.08 }}
-            className="rounded-xl border border-border bg-card p-5 shadow-[var(--shadow-card)]"
-          >
-            <div className="flex items-center justify-between mb-3">
-              <p className="text-xs font-medium text-muted-foreground">{metric.label}</p>
-              <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
-                <metric.icon className="w-4 h-4 text-primary" />
-              </div>
-            </div>
-            <p className="font-mono font-bold text-2xl">{metric.value}</p>
-          </motion.div>
-        ))}
-      </div>
-
-      {/* Placeholder sections */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="rounded-xl border border-border bg-card p-6">
-          <h3 className="font-heading font-semibold mb-4">Solicitudes recientes</h3>
-          <div className="text-center py-8">
-            <MessageSquare className="w-8 h-8 text-muted-foreground/30 mx-auto mb-2" />
-            <p className="text-sm text-muted-foreground">Las solicitudes aparecerán aquí</p>
-          </div>
-        </div>
-        <div className="rounded-xl border border-border bg-card p-6">
-          <h3 className="font-heading font-semibold mb-4">Actividad de vistas</h3>
-          <div className="text-center py-8">
-            <Eye className="w-8 h-8 text-muted-foreground/30 mx-auto mb-2" />
-            <p className="text-sm text-muted-foreground">Las estadísticas aparecerán aquí</p>
-          </div>
-        </div>
-      </div>
-    </div>
+    <DashboardContent
+      companyName={mediaOwner.company_name}
+      metrics={{
+        screens: screensCount || 0,
+        leads: leadsCount || 0,
+        newLeads: newLeadsCount || 0,
+        views: totalViews,
+      }}
+      recentLeads={recentLeads || []}
+    />
   )
 }
