@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "No tienes suscripción activa" }, { status: 400 })
     }
 
-    const appUrl = process.env.NEXT_PUBLIC_APP_URL || "https://pantallas.25ocho.agency"
+    const appUrl = process.env.NEXT_PUBLIC_APP_URL || "https://adfuera.25ocho.agency"
 
     const session = await stripe.billingPortal.sessions.create({
       customer: mediaOwner.stripe_customer_id,

@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next"
 import { createAdminClient } from "@/lib/supabase/admin"
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = "https://pantallas.25ocho.agency"
+  const baseUrl = "https://adfuera.25ocho.agency"
   const supabase = createAdminClient()
 
   // Get all active screens

@@ -41,7 +41,7 @@ export async function POST(request: NextRequest) {
         .eq("id", mediaOwner.id)
     }
 
-    const appUrl = process.env.NEXT_PUBLIC_APP_URL || "https://pantallas.25ocho.agency"
+    const appUrl = process.env.NEXT_PUBLIC_APP_URL || "https://adfuera.25ocho.agency"
 
     const session = await stripe.checkout.sessions.create({
       customer: customerId,
