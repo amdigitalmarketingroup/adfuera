@@ -67,10 +67,34 @@
       "namedRegex": "^/_not\\-found(?:/)?$"
     },
     {
+      "page": "/admin",
+      "regex": "^/admin(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin(?:/)?$"
+    },
+    {
       "page": "/api/leads",
       "regex": "^/api/leads(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/api/leads(?:/)?$"
+    },
+    {
+      "page": "/api/stripe/checkout",
+      "regex": "^/api/stripe/checkout(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/stripe/checkout(?:/)?$"
+    },
+    {
+      "page": "/api/stripe/portal",
+      "regex": "^/api/stripe/portal(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/stripe/portal(?:/)?$"
+    },
+    {
+      "page": "/api/webhooks/stripe",
+      "regex": "^/api/webhooks/stripe(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/webhooks/stripe(?:/)?$"
     },
     {
       "page": "/buscar",
@@ -101,6 +125,12 @@
       "regex": "^/dashboard/pantallas(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/dashboard/pantallas(?:/)?$"
+    },
+    {
+      "page": "/dashboard/pantallas/nueva",
+      "regex": "^/dashboard/pantallas/nueva(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/dashboard/pantallas/nueva(?:/)?$"
     },
     {
       "page": "/dashboard/perfil",

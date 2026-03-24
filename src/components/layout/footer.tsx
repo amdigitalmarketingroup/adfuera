@@ -30,7 +30,7 @@ export function Footer() {
                 <MapPin className="w-4 h-4 text-primary-foreground" />
               </div>
               <span className="font-heading font-bold text-lg tracking-tight">
-                Pantallas<span className="text-primary">MX</span>
+                Ad<span className="text-primary">fuera</span>
               </span>
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed">
@@ -90,7 +90,7 @@ export function Footer() {
 
         <div className="border-t border-border mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Pantallas MX. Todos los derechos reservados.
+            © {new Date().getFullYear()} Adfuera. Todos los derechos reservados.
           </p>
           <p className="text-xs text-muted-foreground">
             Hecho en Baja California, México

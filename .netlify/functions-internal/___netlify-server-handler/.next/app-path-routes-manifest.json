@@ -1,8 +1,10 @@
 {
+  "/(admin)/admin/page": "/admin",
   "/(auth)/login/page": "/login",
   "/(auth)/registro/page": "/registro",
   "/(dashboard)/dashboard/cuenta/page": "/dashboard/cuenta",
   "/(dashboard)/dashboard/page": "/dashboard",
+  "/(dashboard)/dashboard/pantallas/nueva/page": "/dashboard/pantallas/nueva",
   "/(dashboard)/dashboard/pantallas/page": "/dashboard/pantallas",
   "/(dashboard)/dashboard/perfil/page": "/dashboard/perfil",
   "/(dashboard)/dashboard/solicitudes/page": "/dashboard/solicitudes",
@@ -16,6 +18,9 @@
   "/_global-error/page": "/_global-error",
   "/_not-found/page": "/_not-found",
   "/api/leads/route": "/api/leads",
+  "/api/stripe/checkout/route": "/api/stripe/checkout",
+  "/api/stripe/portal/route": "/api/stripe/portal",
+  "/api/webhooks/stripe/route": "/api/webhooks/stripe",
   "/favicon.ico/route": "/favicon.ico",
   "/robots.txt/route": "/robots.txt",
   "/sitemap.xml/route": "/sitemap.xml"

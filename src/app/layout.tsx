@@ -23,8 +23,8 @@ const mono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Pantallas MX — Marketplace de Publicidad Exterior en México",
-    template: "%s | Pantallas MX",
+    default: "Adfuera — Marketplace de Publicidad Exterior en México",
+    template: "%s | Adfuera",
   },
   description:
     "Encuentra espectaculares, pantallas digitales y espacios publicitarios en Mexicali, Tijuana y toda Baja California. Conectamos anunciantes con los mejores espacios de publicidad exterior.",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "es_MX",
-    siteName: "Pantallas MX",
+    siteName: "Adfuera",
   },
 }
 

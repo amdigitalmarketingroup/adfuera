@@ -9,7 +9,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <div className="w-7 h-7 rounded-lg bg-primary flex items-center justify-center">
             <MapPin className="w-3.5 h-3.5 text-white" />
           </div>
-          <span className="font-heading font-bold text-sm">PantallasMX</span>
+          <span className="font-heading font-bold text-sm">Adfuera</span>
         </Link>
         <div className="flex items-center gap-1.5 ml-4 px-2 py-1 rounded bg-amber-100 text-amber-700 text-xs font-medium">
           <Shield className="w-3 h-3" />

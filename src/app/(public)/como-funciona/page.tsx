@@ -26,7 +26,7 @@ export default function ComoFuncionaPage() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-20">
           <h1 className="font-heading font-bold text-3xl md:text-4xl mb-4" style={{ letterSpacing: "-0.03em" }}>
-            Cómo funciona Pantallas MX
+            Cómo funciona Adfuera
           </h1>
           <p className="text-lg text-muted-foreground">
             Conectamos anunciantes con proveedores de publicidad exterior de manera simple, directa y sin comisiones.

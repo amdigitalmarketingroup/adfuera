@@ -39,7 +39,7 @@ export function AdminDashboard({ stats, pendingScreens: initial }: AdminDashboar
     <div>
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
         <h1 className="font-heading font-bold text-2xl mb-1">Panel de administración</h1>
-        <p className="text-sm text-muted-foreground mb-8">Gestión global de Pantallas MX</p>
+        <p className="text-sm text-muted-foreground mb-8">Gestión global de Adfuera</p>
       </motion.div>
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">

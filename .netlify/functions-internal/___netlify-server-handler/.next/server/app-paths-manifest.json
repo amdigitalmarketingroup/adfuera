@@ -1,8 +1,10 @@
 {
+  "/(admin)/admin/page": "app/(admin)/admin/page.js",
   "/(auth)/login/page": "app/(auth)/login/page.js",
   "/(auth)/registro/page": "app/(auth)/registro/page.js",
   "/(dashboard)/dashboard/cuenta/page": "app/(dashboard)/dashboard/cuenta/page.js",
   "/(dashboard)/dashboard/page": "app/(dashboard)/dashboard/page.js",
+  "/(dashboard)/dashboard/pantallas/nueva/page": "app/(dashboard)/dashboard/pantallas/nueva/page.js",
   "/(dashboard)/dashboard/pantallas/page": "app/(dashboard)/dashboard/pantallas/page.js",
   "/(dashboard)/dashboard/perfil/page": "app/(dashboard)/dashboard/perfil/page.js",
   "/(dashboard)/dashboard/solicitudes/page": "app/(dashboard)/dashboard/solicitudes/page.js",
@@ -16,6 +18,9 @@
   "/_global-error/page": "app/_global-error/page.js",
   "/_not-found/page": "app/_not-found/page.js",
   "/api/leads/route": "app/api/leads/route.js",
+  "/api/stripe/checkout/route": "app/api/stripe/checkout/route.js",
+  "/api/stripe/portal/route": "app/api/stripe/portal/route.js",
+  "/api/webhooks/stripe/route": "app/api/webhooks/stripe/route.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
   "/robots.txt/route": "app/robots.txt/route.js",
   "/sitemap.xml/route": "app/sitemap.xml/route.js"

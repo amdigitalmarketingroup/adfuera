@@ -40,7 +40,7 @@ export function Header() {
           <span className={`font-heading font-bold text-xl tracking-tight transition-colors duration-500 ${
             scrolled ? "text-foreground" : "text-white"
           }`}>
-            Pantallas<span className="text-primary">MX</span>
+            Ad<span className="text-primary">fuera</span>
           </span>
         </Link>
 

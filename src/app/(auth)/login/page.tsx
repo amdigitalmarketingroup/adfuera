@@ -46,7 +46,7 @@ export default function LoginPage() {
             <MapPin className="w-5 h-5 text-primary-foreground" />
           </div>
           <span className="font-heading font-bold text-2xl tracking-tight">
-            Pantallas<span className="text-primary">MX</span>
+            Ad<span className="text-primary">fuera</span>
           </span>
         </Link>
         <p className="text-sm text-muted-foreground mt-3">

@@ -41,7 +41,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           </div>
           {!collapsed && (
             <span className="font-heading font-bold text-base tracking-tight">
-              Pantallas<span className="text-primary">MX</span>
+              Ad<span className="text-primary">fuera</span>
             </span>
           )}
         </div>
@@ -91,7 +91,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         <button onClick={() => setMobileOpen(!mobileOpen)} className="text-white/70">
           <Menu className="w-5 h-5" />
         </button>
-        <span className="font-heading font-bold text-white text-sm">PantallasMX</span>
+        <span className="font-heading font-bold text-white text-sm">Adfuera</span>
       </div>
 
       {/* Mobile sidebar overlay */}

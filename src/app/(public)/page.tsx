@@ -3,7 +3,7 @@ import HomeContent from "@/components/home/home-content"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Pantallas MX — Marketplace de Publicidad Exterior en México",
+  title: "Adfuera — Marketplace de Publicidad Exterior en México",
   description: "Encuentra espectaculares, pantallas digitales y espacios publicitarios en Mexicali, Tijuana y toda Baja California.",
 }
 

@@ -20,6 +20,9 @@ import {
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { HeroSearch } from "@/components/search/hero-search"
+import { AnimatedText } from "@/components/ui/animated-text"
+import { AnimatedCounter } from "@/components/ui/animated-counter"
+import { SpotlightCard } from "@/components/ui/spotlight-card"
 import { formatPrice, formatNumber } from "@/lib/utils"
 
 /* ─── Animation Variants ─── */
@@ -197,9 +200,11 @@ export default function HomeContent({ featuredScreens, totalScreens, cityCounts 
               className="font-heading font-extrabold text-5xl md:text-7xl leading-[1.05] mb-7"
               style={{ letterSpacing: "-0.03em" }}
             >
-              Encuentra el espacio{" "}
-              <span className="text-gradient-primary">perfecto</span> para tu
-              marca
+              <AnimatedText text="Encuentra el espacio" delay={0.1} />{" "}
+              <span className="text-gradient-primary">
+                <AnimatedText text="perfecto" delay={0.35} />
+              </span>{" "}
+              <AnimatedText text="para tu marca" delay={0.45} />
             </motion.h1>
 
             {/* Subtitle */}
@@ -225,21 +230,30 @@ export default function HomeContent({ featuredScreens, totalScreens, cityCounts 
               transition={{ duration: 0.5 }}
               className="flex items-center justify-center gap-10 md:gap-16 mt-16"
             >
-              {[
-                { value: totalScreens > 0 ? `${totalScreens}` : "0", label: "Pantallas activas" },
-                { value: "2", label: "Ciudades" },
-                { value: "100%", label: "Verificados" },
-              ].map((stat, i) => (
-                <div key={stat.label} className="flex items-center gap-10 md:gap-16">
-                  <div className="text-center">
-                    <p className="font-heading font-bold text-3xl md:text-4xl text-foreground font-mono">
-                      {stat.value}
-                    </p>
-                    <p className="text-sm text-muted-foreground mt-1">{stat.label}</p>
-                  </div>
-                  {i < 2 && <div className="w-px h-10 bg-border" />}
+              <div className="flex items-center gap-10 md:gap-16">
+                <div className="text-center">
+                  <p className="font-heading font-bold text-3xl md:text-4xl text-foreground font-mono">
+                    <AnimatedCounter target={totalScreens > 0 ? totalScreens : 0} suffix="+" />
+                  </p>
+                  <p className="text-sm text-muted-foreground mt-1">Pantallas activas</p>
                 </div>
-              ))}
+                <div className="w-px h-10 bg-border" />
+              </div>
+              <div className="flex items-center gap-10 md:gap-16">
+                <div className="text-center">
+                  <p className="font-heading font-bold text-3xl md:text-4xl text-foreground font-mono">
+                    <AnimatedCounter target={2} duration={0.8} />
+                  </p>
+                  <p className="text-sm text-muted-foreground mt-1">Ciudades</p>
+                </div>
+                <div className="w-px h-10 bg-border" />
+              </div>
+              <div className="text-center">
+                <p className="font-heading font-bold text-3xl md:text-4xl text-foreground font-mono">
+                  <AnimatedCounter target={100} duration={1.2} suffix="%" />
+                </p>
+                <p className="text-sm text-muted-foreground mt-1">Verificados</p>
+              </div>
             </motion.div>
           </motion.div>
         </div>
@@ -301,7 +315,7 @@ export default function HomeContent({ featuredScreens, totalScreens, cityCounts 
                   transition={{ duration: 0.5 }}
                 >
                   <Link href={`/pantalla/${screen.slug}`} className="group block">
-                    <div className="rounded-2xl border border-border bg-card shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+                    <SpotlightCard className="hover:-translate-y-1 transition-all duration-300 shadow-[var(--shadow-card)]">
                       {/* Gradient image area */}
                       <div
                         className={"relative h-48 bg-gradient-to-br " + GRADIENTS[i % GRADIENTS.length]}
@@ -384,7 +398,7 @@ export default function HomeContent({ featuredScreens, totalScreens, cityCounts 
                           <span className="text-xs text-muted-foreground">/mes</span>
                         </div>
                       </div>
-                    </div>
+                    </SpotlightCard>
                   </Link>
                 </motion.div>
               )
