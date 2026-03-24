@@ -201,10 +201,8 @@ export default function HomeContent({ featuredScreens, totalScreens, cityCounts 
               style={{ letterSpacing: "-0.03em" }}
             >
               <AnimatedText text="Encuentra el espacio" delay={0.1} />{" "}
-              <span className="text-gradient-primary">
-                <AnimatedText text="perfecto" delay={0.35} />
-              </span>{" "}
-              <AnimatedText text="para tu marca" delay={0.45} />
+              <span className="text-gradient-primary">perfecto</span>{" "}
+              <AnimatedText text="para tu marca" delay={0.3} />
             </motion.h1>
 
             {/* Subtitle */}
