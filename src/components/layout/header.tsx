@@ -37,9 +37,7 @@ export function Header() {
           <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary via-primary to-primary/70 flex items-center justify-center shadow-md shadow-primary/20 group-hover:shadow-lg group-hover:shadow-primary/30 transition-all duration-300 group-hover:scale-105">
             <MapPin className="w-4.5 h-4.5 text-primary-foreground" />
           </div>
-          <span className={`font-heading font-bold text-xl tracking-tight transition-colors duration-500 ${
-            scrolled ? "text-foreground" : "text-white"
-          }`}>
+          <span className="font-heading font-bold text-xl tracking-tight text-foreground">
             Ad<span className="text-primary">fuera</span>
           </span>
         </Link>
